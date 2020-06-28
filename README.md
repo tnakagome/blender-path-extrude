@@ -1,3 +1,10 @@
+### Changes from the Original Version
+1. Removed integration with Blender GUI. I only use the feature as part of my Python programs.
+2. Only use one curve during calculation. The original code seems to use all selected curves while calculating the end result, and it sometimes causes Blender to run away.
+3. Explicitly specify the path and curve to be extruded as arguments to execute(). I always know the objects to use in my code.
+
+Below is original Readme.
+
 # Path Extrusion Tool for Blender (Version 2.0)
 ### Overview
 To use this tool, select one polygon curve and another polygon path. The selected curve is extruded along the polygon path. This is achieved by extruding the loop towards each point on the path. The pivot of the curve is translated to the points on the path. The orientation is such that the normal vector of the best-fit plane of the curve is parallel to the path at all points on the path except the first point, for which the original orientation of the curve is used. When the path takes sharp turns, mitering is accomplished by scaling the loop in a manner dependent on the angle of the path.
