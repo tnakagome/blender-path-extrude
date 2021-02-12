@@ -87,3 +87,7 @@ For each step in the extrusion process, the scaling applied is the ratio of the 
 ### Version 3.2 Updates
 1. Fixed rotation behavior for curved paths in Blender 2.90
 2. Added the ability to use extrusion paths whose vertices are not in order.
+
+### Version 3.3 Updates
+1. Duplicate vertex removal in the extrusion path now only occurs if the vertices are adjacent in the path
+2. Added handling for division by 0 errors
