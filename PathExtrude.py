@@ -175,7 +175,7 @@ class PathExtrude():
                 cos = np.dot(initial_normal,average_list[0])
                 if bpy.app.version[0] == 2 and bpy.app.version[1] == 90:
                     bpy.ops.transform.rotate(value=math.acos(cos), orient_matrix=-1*orientMatrix)
-                elif bpy.app.version[0] == 2 and bpy.app.version[1] == 92:
+                elif bpy.app.version[0] == 2 and bpy.app.version[1] >= 92:
                     if -1*orient_vectorz[0] > 0:
                         zRotation = math.atan(-1*orient_vectorz[1]/orient_vectorz[0])
                     elif -1*orient_vectorz[0] < 0:
@@ -246,7 +246,7 @@ class PathExtrude():
                                            (orient_vectorx[2],orient_vectory[2],orient_vectorz[2])))
                     if bpy.app.version[0] == 2 and bpy.app.version[1] == 90:
                         bpy.ops.transform.rotate(value=math.acos(cos), orient_matrix=-1*orientMatrix)
-                    elif bpy.app.version[0] == 2 and bpy.app.version[1] == 92:
+                    elif bpy.app.version[0] == 2 and bpy.app.version[1] >= 92:
                         if -1*orient_vectorz[0] > 0:
                             zRotation = math.atan(-1*orient_vectorz[1]/orient_vectorz[0])
                         elif -1*orient_vectorz[0] < 0:
