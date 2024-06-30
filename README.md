@@ -1,6 +1,7 @@
 ### Changes from the Original Version
 1. Removed integration with Blender GUI. I only use the feature as part of my Python programs.
-2. Explicitly specify the path and curve to be extruded as arguments to execute(). I always know the objects to use in my code.
+1. Explicitly specify the path and curve to be extruded as arguments to execute(). I always know the objects to use in my code.
+1. Removed version specific support for older 2.9x.
 
 Below is original Readme.
 
