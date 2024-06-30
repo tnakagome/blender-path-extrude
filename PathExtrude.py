@@ -173,32 +173,7 @@ class PathExtrude():
                 average_list[0] = initial_normal
             else:
                 cos = min(max(np.dot(initial_normal,average_list[0]),-1),1)
-                if (bpy.app.version[0] == 2 and bpy.app.version[1] == 90) or bpy.app.version[0] > 2:
-                    bpy.ops.transform.rotate(value=math.acos(cos), orient_matrix=-1*orientMatrix)
-                elif bpy.app.version[0] == 2 and bpy.app.version[1] >= 92:
-                    if -1*orient_vectorz[0] > 0:
-                        zRotation = math.atan(-1*orient_vectorz[1]/orient_vectorz[0])
-                    elif -1*orient_vectorz[0] < 0:
-                        zRotation = math.pi + math.atan(-1*orient_vectorz[1]/orient_vectorz[0])
-                    elif orient_vectorz[1] > 0:
-                        zRotation = math.pi/2
-                    elif orient_vectorz[1] < 0:
-                        zRotation = -1*math.pi/2
-                    else:
-                        zRotation = 0
-                    if orient_vectorz[0] != 0 or orient_vectorz[1] != 0:
-                        yRotation = math.atan(orient_vectorz[2]/math.sqrt(orient_vectorz[0]**2 + orient_vectorz[1]**2))
-                    elif orient_vectorz[2] > 0:
-                        yRotation = math.pi/2
-                    else:
-                        yRotation = -1*math.pi/2
-                    bpy.ops.transform.rotate(value= -1*zRotation, orient_axis = 'Z')
-                    bpy.ops.transform.rotate(value= yRotation, orient_axis = 'Y')
-                    bpy.ops.transform.rotate(value= math.acos(cos), orient_axis = 'X')
-                    bpy.ops.transform.rotate(value= -1*yRotation, orient_axis = 'Y')
-                    bpy.ops.transform.rotate(value= zRotation, orient_axis = 'Z')
-                else:
-                    bpy.ops.transform.rotate(value=math.acos(cos), orient_matrix=orientMatrix)
+                bpy.ops.transform.rotate(value=math.acos(cos), orient_matrix=-1*orientMatrix)
                 if np.dot(average_list[0],normalized_differences[1]) != 0:
                     factor0 = abs(1/np.dot(average_list[0],normalized_differences[1]))
                 else:
@@ -244,32 +219,7 @@ class PathExtrude():
                     orientMatrix = Matrix(((orient_vectorx[0],orient_vectory[0],orient_vectorz[0]),
                                            (orient_vectorx[1],orient_vectory[1],orient_vectorz[1]),
                                            (orient_vectorx[2],orient_vectory[2],orient_vectorz[2])))
-                    if (bpy.app.version[0] == 2 and bpy.app.version[1] == 90) or bpy.app.version[0] > 2:
-                        bpy.ops.transform.rotate(value=math.acos(cos), orient_matrix=-1*orientMatrix)
-                    elif bpy.app.version[0] == 2 and bpy.app.version[1] >= 92:
-                        if -1*orient_vectorz[0] > 0:
-                            zRotation = math.atan(-1*orient_vectorz[1]/orient_vectorz[0])
-                        elif -1*orient_vectorz[0] < 0:
-                            zRotation = math.pi + math.atan(-1*orient_vectorz[1]/orient_vectorz[0])
-                        elif orient_vectorz[1] > 0:
-                            zRotation = math.pi/2
-                        elif orient_vectorz[1] < 0:
-                            zRotation = -1*math.pi/2
-                        else:
-                            zRotation = 0
-                        if orient_vectorz[0] != 0 or orient_vectorz[1] != 0:
-                            yRotation = math.atan(orient_vectorz[2]/math.sqrt(orient_vectorz[0]**2 + orient_vectorz[1]**2))
-                        elif orient_vectorz[2] > 0:
-                            yRotation = math.pi/2
-                        else:
-                            yRotation = -1*math.pi/2
-                        bpy.ops.transform.rotate(value= -1*zRotation, orient_axis = 'Z')
-                        bpy.ops.transform.rotate(value= yRotation, orient_axis = 'Y')
-                        bpy.ops.transform.rotate(value= math.acos(cos), orient_axis = 'X')
-                        bpy.ops.transform.rotate(value= -1*yRotation, orient_axis = 'Y')
-                        bpy.ops.transform.rotate(value= zRotation, orient_axis = 'Z')
-                    else:
-                        bpy.ops.transform.rotate(value=math.acos(cos), orient_matrix=orientMatrix)
+                    bpy.ops.transform.rotate(value=math.acos(cos), orient_matrix=-1*orientMatrix)
                     bpy.ops.transform.resize(value=(1/factor_list[i-1],1,1), orient_matrix=orientMatrix)
                     bpy.ops.transform.resize(value=(factor_list[i],1,1), orient_matrix=orientMatrix)
             else:
